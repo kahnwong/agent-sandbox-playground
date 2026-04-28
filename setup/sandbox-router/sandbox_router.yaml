@@ -4,7 +4,8 @@ kind: Service
 metadata:
   name: sandbox-router-svc
 spec:
-  type: ClusterIP
+  # type: ClusterIP
+  type: NodePort
   selector:
     app: sandbox-router
   ports:
@@ -12,6 +13,7 @@ spec:
       protocol: TCP
       port: 8080 # The port the service will listen on
       targetPort: 8080 # The port the router container listens on (from the sandbox_router/Dockerfile)
+      nodePort: 30051 # ADDED BY ME
 ---
 # The Deployment to manage and run the router pods.
 apiVersion: apps/v1

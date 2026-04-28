@@ -3,7 +3,7 @@ on:
   push:
     branches: [master]
     paths:
-      - 'setup/sandbox-router/**'
+      - 'setup/**'
   workflow_dispatch:
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -41,3 +41,4 @@ jobs:
             *.cache-from=type=gha,scope=buildx-${{ github.ref_name }}
             *.cache-to=type=gha,mode=max,scope=buildx-${{ github.ref_name }}
             sandbox-router.tags=${{ env.REGISTRY }}/${{ env.IMAGE_OWNER }}/sandbox-router:${{ env.GIT_SHORT_SHA }}
+            sandbox-template.tags=${{ env.REGISTRY }}/${{ env.IMAGE_OWNER }}/sandbox-template:${{ env.GIT_SHORT_SHA }}
